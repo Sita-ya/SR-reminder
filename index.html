@@ -1,0 +1,845 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>狗勾集點日記</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&family=Iansui&display=swap">
+<style>
+/* Layout: one narrow phone-width column, bottom tab bar, paper-card sections with wobbly hand-drawn outlines. */
+:root{
+  --bg:#FFFCF6; --paper:#FFFFFF; --ink:#2C5679; --ink-soft:#587D9B; --line:#8DB8D2;
+  --accent:#3F8BC4; --on-accent:#FFFFFF; --ico-bg:rgba(255,255,255,.65); --warn:#D87893; --sline:#57483B;
+  --coral:#E3AFB4; --yamabuki:#E8BF94; --mizu:#83B6DE; --wakatake:#B2CCA0; --lav:#B7B3DA; --teal:#EBDD92;
+  --c-sleep:#E6E4F3; --c-water:#D6EDFF; --c-eyes:#FBF4CC; --c-skin:#F7E3E3; --c-supp:#E6EFDD;
+  --c-review:#DCEBF8; --c-posture:#F7E2CF; --c-nav:#D6E4FF;
+  --stamp-a:#6FA3CC; --stamp-b:#D9959F; --stamp-c:#7DB5A6;
+  --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .28 0 0 0 0 .36  0 0 0 0 .42  1.4 0 0 0 -.56'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  --font-display:'Huninn','Iansui','PingFang TC','Noto Sans TC','Microsoft JhengHei',sans-serif;
+  --font-body:'Huninn','PingFang TC','Noto Sans TC','Microsoft JhengHei',sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1B262E; --paper:#27363F; --ink:#E4EDF2; --ink-soft:#A9BBC7; --line:#7F99AA;
+    --accent:#8DB4D6; --on-accent:#14222C; --ico-bg:rgba(0,0,0,.22); --warn:#E0A0B5; --sline:#E6D5C9; --coral:#B56F63; --yamabuki:#B89640; --mizu:#4F8CA8; --wakatake:#6E9A5A; --lav:#6C69A6; --teal:#4C9A8C;
+    --c-sleep:#383D5C; --c-water:#2A5163; --c-eyes:#2B514E; --c-skin:#57404A; --c-supp:#3F5238;
+    --c-review:#4A4733; --c-posture:#2F4152; --c-nav:#2C3C4D;
+    --stamp-a:#8DB4D6; --stamp-b:#E0A0B5; --stamp-c:#8FC5B6;
+    --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .8  0 0 0 0 .88  0 0 0 0 .95  1.2 0 0 0 -.5'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1B262E; --paper:#27363F; --ink:#E4EDF2; --ink-soft:#A9BBC7; --line:#7F99AA;
+  --accent:#8DB4D6; --on-accent:#14222C; --ico-bg:rgba(0,0,0,.22); --warn:#E0A0B5; --sline:#E6D5C9; --coral:#B56F63; --yamabuki:#B89640; --mizu:#4F8CA8; --wakatake:#6E9A5A; --lav:#6C69A6; --teal:#4C9A8C;
+  --c-sleep:#383D5C; --c-water:#2A5163; --c-eyes:#2B514E; --c-skin:#57404A; --c-supp:#3F5238;
+  --c-review:#4A4733; --c-posture:#2F4152; --c-nav:#2C3C4D;
+  --stamp-a:#8DB4D6; --stamp-b:#E0A0B5; --stamp-c:#8FC5B6;
+  --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .8  0 0 0 0 .88  0 0 0 0 .95  1.2 0 0 0 -.5'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  color-scheme:dark;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:0;overflow-x:hidden;
+}
+body::after{content:"";position:fixed;inset:0;background-image:var(--grain);opacity:.1;pointer-events:none;z-index:70}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+input{font:inherit;color:inherit}
+h1,h2,h3,p{margin:0}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:10px}
+svg{display:block}
+
+.app{max-width:520px;margin:0 auto;padding-block:14px 130px}
+.top{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.brand{display:flex;align-items:center;gap:8px;min-width:0;flex:1}
+.brand b{font-family:var(--font-display);font-weight:400;font-size:21px;white-space:nowrap}
+.sync{font-size:12px;color:var(--ink-soft);display:flex;align-items:center;gap:5px}
+.sync::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--stamp-c)}
+.sync.local::before,.sync.ro::before{background:var(--warn)}
+.coin{display:flex;align-items:center;gap:6px;padding:5px 12px 5px 8px;font-size:15px;--tint:var(--paper);--r:999px}
+.coin svg{width:20px;height:20px;fill:var(--stamp-a)}
+.coin b{font-variant-numeric:tabular-nums}
+
+/* hand-drawn surfaces: wobbly outline lives on ::before so text stays crisp */
+.sk{position:relative;isolation:isolate;--r:26px}
+.sk::before{
+  content:"";position:absolute;inset:2px;z-index:-1;border-radius:var(--r);
+  background-color:color-mix(in srgb,var(--tint,var(--paper)) 100%,transparent);backdrop-filter:blur(2px);
+  border:3px solid var(--sline);
+}
+
+.banner{padding:10px 14px;margin-bottom:12px;font-size:14px;--tint:var(--c-review)}
+.hero{padding:16px 16px 14px;margin-bottom:14px;--tint:var(--c-water)}
+.hero-main{display:flex;gap:12px;align-items:center}
+.hero .mascot{width:104px;flex:none}
+.hero .mascot.hop{animation:hop 1s ease-in-out 2}
+.date{font-size:13px;color:var(--ink-soft)}
+.hero h1{font-family:var(--font-display);font-weight:400;font-size:25px;line-height:1.25;text-wrap:balance}
+.msg{font-size:14px;color:var(--ink-soft);margin-top:2px}
+.prog{margin-top:12px;display:flex;align-items:center;gap:10px}
+.bar{flex:1;height:14px;position:relative;isolation:isolate}
+.bar::before{content:"";position:absolute;inset:0;border:2px solid var(--sline);border-radius:10px;background:var(--ico-bg)}
+.bar i{position:absolute;left:3px;top:3px;bottom:3px;border-radius:7px;background:var(--mizu);transition:width .5s ease;min-width:0;max-width:calc(100% - 6px)}
+.prog span{font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{font-size:13px;padding:3px 11px;border-radius:999px;background:var(--ico-bg);border:1.5px dashed var(--line)}
+.chip b{font-variant-numeric:tabular-nums}
+
+.slot{display:flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:400;font-size:19px;margin:20px 2px 10px}
+.slot svg{width:24px;height:24px;fill:none;stroke:var(--sline);stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.slot small{font-family:var(--font-body);font-size:13px;color:var(--ink-soft)}
+.slot .cnt{margin-left:auto;font-family:var(--font-body);font-size:13px;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+
+.row{display:flex;align-items:center;gap:12px;padding:11px 14px;min-height:62px;margin-bottom:10px;cursor:pointer;user-select:none;transition:transform .12s}
+.row:active{transform:scale(.985)}
+.row .ico{width:40px;height:40px;border-radius:50%;background:var(--solid,var(--ico-bg));display:grid;place-items:center;flex:none}
+.ico svg,.note h3 svg{fill:var(--f,none);stroke:var(--sline);stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.ico svg{width:26px;height:26px}
+.i-moon,.i-star{--f:#F0DBA0}.i-drop{--f:#A9CDE8}.i-eye{--f:#FFFFFF}.i-tube{--f:#EBBFC3}.i-pill{--f:#EBD3A0}.i-coffee{--f:#E6CFB0}.i-heart{--f:#E6A4AB}
+.txt{flex:1;min-width:0;display:flex;flex-direction:column}
+.txt b{font-weight:400;font-size:16.5px;line-height:1.3}
+.txt small{font-size:13px;color:var(--ink-soft);line-height:1.4}
+.row.done .txt b{color:var(--ink-soft)}
+.row.done::before{border-color:var(--sline)}
+.chk{width:32px;height:32px;flex:none}
+.chk .ring{fill:var(--ico-bg);stroke:var(--line);stroke-width:2;transition:fill .2s,stroke .2s}
+.chk .tick{fill:none;stroke:var(--on-accent);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:26;stroke-dashoffset:26;transition:stroke-dashoffset .3s ease .05s}
+.row.done .chk .ring{fill:var(--accent);stroke:var(--accent)}
+.row.done .chk .tick{stroke-dashoffset:0}
+.counter{display:flex;align-items:center;gap:6px;flex:none}
+.counter .n{font-size:14px;font-variant-numeric:tabular-nums;min-width:2.6em;text-align:right}
+.minus{width:30px;height:30px;border-radius:50%;border:1.5px dashed var(--line);display:grid;place-items:center;font-size:18px;line-height:1;background:var(--ico-bg)}
+.wiggle{animation:wiggle .4s}
+
+.exc{display:flex;align-items:center;gap:10px;margin:-2px 4px 12px 52px;font-size:13.5px;color:var(--ink-soft)}
+.pill{padding:5px 13px;border-radius:999px;border:1.5px dashed var(--line);background:var(--ico-bg);font-size:13.5px}
+.pill[aria-pressed="true"]{background:var(--accent);border-style:solid;border-color:var(--accent);color:var(--on-accent)}
+.pill:disabled{opacity:.5;cursor:default}
+
+.review{padding:14px 14px 6px;margin-top:22px;--tint:var(--c-review)}
+.review h2{font-family:var(--font-display);font-weight:400;font-size:20px;display:flex;align-items:center;gap:8px}
+.review h2 svg{width:26px;height:26px;fill:#FFD86F;stroke:var(--sline);stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.review > p{font-size:13.5px;color:var(--ink-soft);margin:2px 0 12px}
+.review .row{background:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:9px 18px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-size:15px;border:2px solid var(--accent);min-height:42px}
+.btn.ghost{background:var(--ico-bg);color:var(--ink);border:1.5px dashed var(--line)}
+.btn:disabled{opacity:.5;cursor:default}
+.btn.small{padding:5px 13px;min-height:34px;font-size:14px}
+.btn.warn{background:var(--warn);border-color:var(--warn);color:var(--on-accent)}
+.review .btn{margin:2px 0 12px;width:100%}
+
+.bonus{display:flex;align-items:center;gap:12px;padding:12px 16px;margin-top:20px;--tint:var(--c-review)}
+.bonus.got::before{border-color:var(--accent);border-style:solid}
+.bonus svg{width:32px;height:32px;fill:#FFD86F;stroke:var(--sline);stroke-width:2.8;stroke-linejoin:round;flex:none}
+.bonus.got svg{animation:hop 1s ease-in-out 2}
+.bonus b{font-weight:400}
+.bonus small{display:block;font-size:13px;color:var(--ink-soft)}
+
+.period{padding:12px 14px;margin-bottom:6px;--tint:var(--c-skin)}
+.period h3{font-family:var(--font-display);font-weight:400;font-size:17px}
+.period p{font-size:13.5px;color:var(--ink-soft);margin:2px 0 10px}
+.period .ctl{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.period input[type=date]{padding:6px 10px;border-radius:12px;border:1.5px dashed var(--line);background:var(--ico-bg);min-height:42px}
+
+h2.page{font-family:var(--font-display);font-weight:400;font-size:25px;margin:6px 2px 4px}
+.sub{font-size:14px;color:var(--ink-soft);margin:0 2px 14px}
+
+/* punch card */
+.punch{padding:16px 14px 16px;margin-bottom:16px;--tint:var(--paper)}
+.card-a{--stampc:var(--stamp-a)} .card-b{--stampc:var(--stamp-b)} .card-c{--stampc:var(--stamp-c)}
+.punch-head{display:flex;align-items:center;gap:10px;padding:0 4px 10px;border-bottom:2px dashed var(--line);margin-bottom:12px}
+.punch-head h3{font-family:var(--font-display);font-weight:400;font-size:22px;flex:1;min-width:0}
+.punch-head h3 small{font-family:var(--font-body);font-size:13px;color:var(--ink-soft);margin-left:6px}
+.punch-head .cn{font-size:15px;font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px 5px;padding:0 2px}
+.cell{position:relative;aspect-ratio:1;display:grid;place-items:center;color:var(--ink-soft)}
+.cell .ring{position:absolute;inset:0;width:100%;height:100%;fill:none;stroke:var(--line);stroke-width:1.5;opacity:.45}
+.cell i{font-style:normal;font-size:11px;opacity:.55;position:relative}
+.cell .mile{position:relative;width:55%;height:55%;fill:var(--yamabuki);stroke:var(--sline);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+.stamp{position:absolute;inset:-5px;display:block;transform:translate(var(--dx),var(--dy)) rotate(var(--rot));opacity:var(--op)}
+.stamp svg{width:100%;height:100%;fill:var(--stampc)}
+.stamp.press{animation:press .65s cubic-bezier(.3,1.3,.5,1) both;animation-delay:var(--delay,0ms)}
+.stamp.press::after{content:"";position:absolute;inset:14%;border-radius:50%;border:2px solid var(--stampc);opacity:0;animation:splash .6s ease-out both;animation-delay:calc(var(--delay,0ms) + .3s)}
+.punch-foot{margin-top:12px;font-size:13px;color:var(--ink-soft);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:0 4px}
+.newcard{margin:0 0 16px;padding:14px;text-align:center;--tint:var(--c-review)}
+.newcard p{margin-bottom:10px}
+.hist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.mini{padding:10px 10px 8px;text-align:left;width:100%;--tint:var(--paper)}
+.mini .dots{display:grid;grid-template-columns:repeat(6,1fr);gap:3px;margin-bottom:6px}
+.mini .dots i{aspect-ratio:1;border-radius:50%;background:var(--stampc);opacity:.8}
+.mini .dots i.off{background:none;border:1px dashed var(--line);opacity:.6}
+.mini b{font-weight:400;font-size:14px;display:block}
+.mini small{font-size:12px;color:var(--ink-soft)}
+.expanded{grid-column:1/-1}
+.sec{font-family:var(--font-display);font-weight:400;font-size:19px;margin:22px 2px 10px}
+
+/* rewards */
+.bal{display:flex;align-items:center;gap:14px;padding:16px;margin-bottom:14px;--tint:var(--c-nav)}
+.bal .big{font-family:var(--font-display);font-size:38px;line-height:1;font-variant-numeric:tabular-nums}
+.bal small{display:block;color:var(--ink-soft);font-size:13px}
+.bal svg{width:56px;height:56px;fill:var(--stamp-a);flex:none}
+.rw{padding:12px 14px;margin-bottom:10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.rw .nm{flex:1;min-width:8em}
+.rw .nm b{font-weight:400;font-size:17px;display:block;overflow-wrap:anywhere}
+.rw .nm small{color:var(--ink-soft);font-size:13px;font-variant-numeric:tabular-nums}
+.rw .acts{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.iconbtn{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;border:1.5px dashed var(--line);background:var(--ico-bg)}
+.iconbtn svg{width:18px;height:18px;fill:none;stroke:var(--ink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.form{padding:14px;margin-bottom:10px;--tint:var(--c-review)}
+.form .f{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.form input{padding:8px 12px;border-radius:14px;border:1.5px solid var(--line);background:var(--paper);min-height:42px;min-width:0}
+.form input.name{flex:1 1 9em}
+.form input.cost{flex:0 0 6.5em}
+.ex{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;align-items:center;font-size:13px;color:var(--ink-soft)}
+.empty{padding:18px 16px;text-align:center;color:var(--ink-soft);font-size:14px;margin-bottom:10px;--tint:var(--paper)}
+.empty .mascot{width:64px;margin:0 auto 6px}
+.log{display:flex;align-items:center;gap:10px;padding:10px 4px;border-bottom:1.5px dashed var(--line);font-size:14.5px}
+.log:last-child{border-bottom:0}
+.log .d{color:var(--ink-soft);font-size:12.5px;font-variant-numeric:tabular-nums;flex:none}
+.log .t{flex:1;min-width:0;overflow-wrap:anywhere}
+.log .p{font-variant-numeric:tabular-nums;color:var(--warn);flex:none}
+
+/* notes */
+.note{padding:14px 16px;margin-bottom:12px}
+.note h3{font-family:var(--font-display);font-weight:400;font-size:18px;display:flex;align-items:center;gap:8px}
+.note h3 svg{width:26px;height:26px;flex:none}
+.note p{font-size:14.5px;margin-top:4px;overflow-wrap:anywhere}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.tag{font-size:12.5px;padding:2px 10px;border-radius:999px;background:var(--ico-bg);border:1.5px dashed var(--line)}
+.tag.p{border-color:var(--warn)}
+.rules{padding-left:1.2em;margin:6px 0 0;font-size:14.5px}
+.rules li{margin:3px 0}
+
+/* nav, toast, overlay */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:40;padding:8px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.nav-in{max-width:520px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:6px;--tint:var(--c-nav)}
+.nav button{display:flex;flex-direction:column;align-items:center;gap:1px;padding:6px 0 4px;font-size:12.5px;border-radius:16px;color:var(--ink-soft);position:relative}
+.nav button svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.nav button svg.f{fill:currentColor;stroke:none}
+.nav button[aria-current="page"]{color:var(--ink);background:var(--paper)}
+.nav button[aria-current="page"] svg{stroke:var(--accent)}
+.nav button[aria-current="page"] svg.f{fill:var(--accent)}
+.toast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);z-index:60;max-width:min(92vw,440px);padding:9px 12px 9px 16px;display:flex;align-items:center;gap:10px;font-size:14.5px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;--tint:var(--paper)}
+.toast.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.toast button{padding:4px 12px;border-radius:999px;border:1.5px solid var(--accent);color:var(--accent);font-size:14px;flex:none}
+.ov{position:fixed;inset:0;z-index:65;display:grid;place-items:center;padding:20px;background:rgba(30,45,58,.45)}
+.sheet{max-width:360px;width:100%;padding:22px 20px 20px;text-align:center;--tint:var(--paper)}
+.sheet .mascot{width:160px;margin:-6px auto 4px;animation:hop 1s ease-in-out infinite}
+.sheet h2{font-family:var(--font-display);font-weight:400;font-size:24px;text-wrap:balance}
+.sheet p{font-size:14.5px;color:var(--ink-soft);margin:6px 0 16px}
+.sheet .btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.fx{position:fixed;pointer-events:none;z-index:80}
+.fx svg{width:100%;height:100%}
+.spark{width:20px;height:20px;animation:spark .8s ease-out forwards}
+.conf{position:fixed;top:-30px;z-index:66;width:26px;height:26px;pointer-events:none;animation:fall var(--dur) ease-in forwards}
+.conf svg{width:100%;height:100%}
+
+@keyframes press{
+  0%{transform:translate(var(--dx),calc(var(--dy) - 28px)) rotate(calc(var(--rot) + 20deg)) scale(1.9);opacity:0}
+  45%{opacity:var(--op)}
+  62%{transform:translate(var(--dx),var(--dy)) rotate(var(--rot)) scale(.8)}
+  80%{transform:translate(var(--dx),var(--dy)) rotate(var(--rot)) scale(1.07)}
+  100%{transform:translate(var(--dx),var(--dy)) rotate(var(--rot)) scale(1);opacity:var(--op)}
+}
+@keyframes splash{0%{opacity:.6;transform:scale(.7)}100%{opacity:0;transform:scale(1.7)}}
+@keyframes hop{0%,100%{transform:translateY(0) rotate(0)}30%{transform:translateY(-8px) rotate(-4deg)}60%{transform:translateY(0) rotate(3deg)}}
+@keyframes wiggle{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+@keyframes spark{0%{transform:translate(0,0) scale(.4) rotate(0);opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(1.1) rotate(var(--rot));opacity:0}}
+@keyframes fall{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(var(--dx),110vh) rotate(var(--rot));opacity:.9}}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .conf,.fx{display:none}
+}
+@media (max-width:360px){.hero .mascot{width:80px}.hero h1{font-size:22px}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="wob" x="-3%" y="-8%" width="106%" height="116%"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="3" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="1.6" xChannelSelector="R" yChannelSelector="G"/></filter>
+    <filter id="wob2" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="2" seed="9" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="1.2" xChannelSelector="R" yChannelSelector="G"/></filter>
+    <filter id="ink1" x="-15%" y="-15%" width="130%" height="130%"><feTurbulence type="fractalNoise" baseFrequency="0.07" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.6" result="d"/><feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="7" result="g"/><feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -2.3 0 0 0 1.85" result="m"/><feComposite in="d" in2="m" operator="in"/></filter>
+    <filter id="ink2" x="-15%" y="-15%" width="130%" height="130%"><feTurbulence type="fractalNoise" baseFrequency="0.09" numOctaves="2" seed="21" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.2" result="d"/><feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="3" seed="15" result="g"/><feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -2.1 0 0 0 1.75" result="m"/><feComposite in="d" in2="m" operator="in"/></filter>
+    <filter id="ink3" x="-15%" y="-15%" width="130%" height="130%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="33" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3" result="d"/><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="2" result="g"/><feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -2.5 0 0 0 1.95" result="m"/><feComposite in="d" in2="m" operator="in"/></filter>
+
+    <symbol id="i-paw" viewBox="0 0 40 40">
+      <path d="M20 21c-5.2 0-9.6 4.2-9.6 8.2 0 3.1 2.6 4.6 5.3 4.1 1.5-.3 2.8-.8 4.3-.8s2.8.5 4.3.8c2.7.5 5.3-1 5.3-4.1 0-4-4.4-8.2-9.6-8.2z"/>
+      <ellipse cx="8.6" cy="17.5" rx="3.3" ry="4.5" transform="rotate(-24 8.6 17.5)"/>
+      <ellipse cx="15.6" cy="9.8" rx="3.6" ry="5" transform="rotate(-8 15.6 9.8)"/>
+      <ellipse cx="24.6" cy="9.8" rx="3.6" ry="5" transform="rotate(8 24.6 9.8)"/>
+      <ellipse cx="31.6" cy="17.5" rx="3.3" ry="4.5" transform="rotate(24 31.6 17.5)"/>
+    </symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M19.5 14.5A8 8 0 1 1 9.5 4.5a6.5 6.5 0 0 0 10 10z"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3c3 4 6.200 7 6.200 11a6.200 6.200 0 0 1-12.400 0c0-4 3.200-7 6.200-11z"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12c3-5 7-7 10-7s7 2 10 7c-3 5-7 7-10 7S5 17 2 12z"/><circle cx="12" cy="12" r="3" fill="#8B6B5A" stroke="none"/></symbol>
+    <symbol id="i-tube" viewBox="0 0 24 24"><rect x="7.500" y="9" width="9" height="12" rx="2.500"/><path d="M9.500 9V6.500h5V9M10.500 3.500h3v3h-3z"/></symbol>
+    <symbol id="i-pill" viewBox="0 0 24 24"><rect x="2.500" y="8" width="19" height="8" rx="4" transform="rotate(-35 12 12)"/><path d="M9.200 8.800l5.600 6.400"/></symbol>
+    <symbol id="i-coffee" viewBox="0 0 24 24"><path d="M4.500 10h12v5.500a4.500 4.500 0 0 1-4.500 4.500h-3a4.500 4.500 0 0 1-4.500-4.500z"/><path d="M16.500 11.500h1.700a2.500 2.500 0 0 1 0 5h-1.700"/><path d="M8.500 3.500c-1 1.200 1 2.200 0 3.500M12.500 3.500c-1 1.200 1 2.200 0 3.500" fill="none"/></symbol>
+    <symbol id="i-heart"viewBox="0 0 24 24"><path d="M12 20s-7.500-4.600-7.500-10.200A4.200 4.200 0 0 1 12 7.600a4.200 4.200 0 0 1 7.500 2.200C19.500 15.400 12 20 12 20z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.600 5.600 6.100.7-4.500 4.200 1.200 6L12 16.500 6.600 19.500l1.200-6L3.300 9.300l6.100-.7z"/></symbol>
+    <symbol id="i-fish" viewBox="0 0 24 24"><path d="M3 12c3-5 9-6 13-2l5-3v10l-5-3c-4 4-10 3-13-2z"/><circle cx="8" cy="11" r="1"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3.500" y="9" width="17" height="11" rx="2"/><path d="M12 9v11M3.500 13h17M12 9C10 4.500 6 5 7 7.500 7.500 9 10 9 12 9zM12 9c2-4.500 6-4 5-1.500C16.500 9 14 9 12 9z"/></symbol>
+    <symbol id="i-note" viewBox="0 0 24 24"><path d="M6 3.500h8.500L18.500 7.500v13H6z"/><path d="M9 11h6M9 15h6"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.600 5.600l1.400 1.400M17 17l1.400 1.400M5.600 18.400L7 17M17 7l1.400-1.400"/></symbol>
+    <symbol id="i-sunrise" viewBox="0 0 24 24"><path d="M3 18.500h18M6.500 18.500a5.500 5.500 0 0 1 11 0M12 6v3M4.800 9.500l1.800 1.800M19.200 9.500l-1.800 1.800"/></symbol>
+    <symbol id="i-sunset" viewBox="0 0 24 24"><path d="M3 19h18M6.500 19a5.500 5.500 0 0 1 11 0M12 4v6M9 8l3 3 3-3"/></symbol>
+    <symbol id="i-pawo" viewBox="0 0 24 24"><path d="M12 12.500c-3 0-5.500 2.600-5.500 5 0 1.900 1.600 2.800 3.200 2.500.9-.2 1.600-.5 2.300-.5s1.400.3 2.300.5c1.600.3 3.200-.6 3.200-2.500 0-2.400-2.500-5-5.500-5z"/><ellipse cx="4.800" cy="11" rx="1.900" ry="2.500" transform="rotate(-20 4.800 11)"/><ellipse cx="9" cy="6.500" rx="2" ry="2.700" transform="rotate(-8 9 6.500)"/><ellipse cx="15" cy="6.500" rx="2" ry="2.700" transform="rotate(8 15 6.500)"/><ellipse cx="19.200" cy="11" rx="1.900" ry="2.500" transform="rotate(20 19.200 11)"/></symbol>
+    <symbol id="i-pen"viewBox="0 0 24 24"><path d="M4 20l1-4L16.500 4.500a2 2 0 0 1 3 3L8 19z"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M5 7h14M9 7V4.500h6V7M7 7l1 13h8l1-13"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.500l4.500 4.500L19 7.500"/></symbol>
+  </defs>
+</svg>
+
+<div class="app" id="app">
+  <header class="top">
+    <div class="brand">
+      <svg width="34" height="34" viewBox="0 0 40 40" style="fill:var(--stamp-a)" aria-hidden="true"><use href="#i-paw"/></svg>
+      <div style="min-width:0"><b>狗勾集點日記</b><div class="sync" id="sync">連線中</div></div>
+    </div>
+    <div class="coin sk" title="可兌換點數"><svg viewBox="0 0 40 40" aria-hidden="true"><use href="#i-paw"/></svg><b id="bal">0</b><span style="font-size:13px">點</span></div>
+  </header>
+  <div id="banner"></div>
+  <main id="view" aria-live="polite"></main>
+</div>
+
+<nav class="nav" aria-label="主要頁面">
+  <div class="nav-in sk">
+    <button data-act="tab" data-id="today"><svg viewBox="0 0 24 24"><use href="#i-sun"/></svg>今天</button>
+    <button data-act="tab" data-id="card"><svg class="f" viewBox="0 0 40 40"><use href="#i-paw"/></svg>集點卡</button>
+    <button data-act="tab" data-id="reward"><svg viewBox="0 0 24 24"><use href="#i-gift"/></svg>獎勵</button>
+    <button data-act="tab" data-id="notes"><svg viewBox="0 0 24 24"><use href="#i-note"/></svg>注意事項</button>
+  </div>
+</nav>
+<div class="toast sk" id="toast" role="status"><span id="toast-t"></span><button id="toast-b" data-act="undo" hidden>復原</button></div>
+<div class="ov" id="ov" hidden></div>
+
+<script>
+(function(){
+'use strict';
+/* ---------- 設定:點數規則都在這裡調整 ---------- */
+var ROLL_HOUR=3;      // 凌晨 3 點才換日,晚睡到 24:00 後仍算同一天
+var CARD=30;          // 每張集點卡格數
+var BONUS=5;          // 整天全達成的額外點數
+var EXC_PER_WEEK=1;   // 平日每週例外日次數
+
+var CATS={
+  sleep:{c:'--c-sleep',s:'--lav',icon:'moon'}, water:{c:'--c-water',s:'--mizu',icon:'drop'}, eyes:{c:'--c-eyes',s:'--teal',icon:'eye'},
+  skin:{c:'--c-skin',s:'--coral',icon:'tube'}, supp:{c:'--c-supp',s:'--wakatake',icon:'pill'}, posture:{c:'--c-posture',s:'--yamabuki',icon:'heart'}
+};
+var SLOTS=[
+  {id:'am',name:'早上',hint:'起床後・出門前',icon:'sunrise'},
+  {id:'noon',name:'午餐',hint:'白天・上班期間',icon:'sun'},
+  {id:'eve',name:'晚上',hint:'下班後・洗完澡',icon:'sunset'},
+  {id:'night',name:'睡前',hint:'準備休息',icon:'moon'}
+];
+var TASKS=[
+  {id:'lingzhi',slot:'am',cat:'supp',name:'靈芝',note:'空腹・起床後飲用'},
+  {id:'probiotic',slot:'am',cat:'supp',name:'益生菌',note:'早上空腹,或飯前 30 分鐘 / 隨餐'},
+  {id:'eye_am',slot:'am',cat:'eyes',name:'早上眼藥水',note:'出門前點一次'},
+  {id:'balm',slot:'am',cat:'skin',icon:'pill',name:'備用藥與藥膏',note:'過敏藥、止痛藥、藥水等,放進包包隨身攜帶'},
+  {id:'bcomplex',slot:'noon',cat:'supp',name:'B 群',note:'午餐後'},
+  {id:'iron',slot:'noon',cat:'supp',name:'鐵劑',note:'隨餐或飯後,可搭配維他命 C',only:'iron'},
+  {id:'water',slot:'noon',cat:'water',name:'上班期間喝水',note:'水壺至少兩壺',target:2,unit:'壺'},
+  {id:'tears',slot:'noon',cat:'eyes',name:'人工淚液',note:'每天至少三次',target:3,unit:'次'},
+  {id:'eye_pm',slot:'eve',cat:'eyes',name:'晚上眼藥水',note:'睡前點一次'},
+  {id:'cranberry',slot:'eve',cat:'supp',name:'蔓越莓錠',note:'任何時間都可以',only:'cran'},
+  {id:'lotion',slot:'eve',cat:'skin',name:'洗完澡立刻擦乳液',note:'趁皮膚還濕濕的'},
+  {id:'sleep',slot:'night',cat:'sleep',name:'早睡'}
+];
+var AVOID=[
+  {id:'legs',cat:'posture',name:'今天沒有翹腳',note:'腰要好好休息'},
+  {id:'rub',cat:'eyes',icon:'eye',name:'沒有用力揉眼睛'},
+  {id:'cold',cat:'water',name:'沒有喝冰的'},
+  {id:'burp',cat:'sleep',icon:'heart',name:'打嗝嘴巴閉閉'},
+  {id:'caf',cat:'skin',icon:'coffee',name:'沒有攝取咖啡因'}
+];
+var EXAMPLES=[{name:'一杯喜歡的飲料',cost:20},{name:'看一場電影',cost:60},{name:'一次小小的放鬆時間',cost:40}];
+
+/* ---------- 工具 ---------- */
+var $=function(s){return document.querySelector(s)};
+var esc=function(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})};
+var pad=function(n){return String(n).padStart(2,'0')};
+var fmtKey=function(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())};
+var parseKey=function(k){var p=k.split('-').map(Number);return new Date(p[0],p[1]-1,p[2])};
+var addDays=function(k,n){var d=parseKey(k);d.setDate(d.getDate()+n);return fmtKey(d)};
+var diffDays=function(a,b){return Math.round((parseKey(a)-parseKey(b))/864e5)};
+var todayKey=function(){return fmtKey(new Date(Date.now()-ROLL_HOUR*36e5))};
+var weekStart=function(k){return addDays(k,-((parseKey(k).getDay()+6)%7))};
+var WD=['日','一','二','三','四','五','六'];
+var mdLabel=function(k){var d=parseKey(k);return (d.getMonth()+1)+'/'+d.getDate()};
+var clone=function(o){return JSON.parse(JSON.stringify(o))};
+var isObj=function(o){return o&&typeof o==='object'&&!Array.isArray(o)};
+function merge(t,s){for(var k in s){if(isObj(s[k])){t[k]=merge(isObj(t[k])?t[k]:{},s[k])}else t[k]=s[k]}return t}
+function invert(cur,patch){var out={};for(var k in patch){if(isObj(patch[k]))out[k]=invert(isObj(cur)&&cur[k]?cur[k]:{},patch[k]);else{var p=cur?cur[k]:undefined;out[k]=p===undefined?(typeof patch[k]==='number'?0:false):p}}return out}
+function hash(n){var h=Math.imul(n+1,2654435761)>>>0;h^=h>>>15;h=Math.imul(h,2246822519)>>>0;h^=h>>>13;return h>>>0}
+var uid=function(p){return p+Date.now().toString(36)+Math.random().toString(36).slice(2,6)};
+
+/* ---------- 狀態與儲存 ---------- */
+var S={days:{},rewards:{},redemptions:{},meta:{}};
+var ui={tab:'today',ready:false,readOnly:false,mode:'connecting',armed:null,editId:null,draft:{name:'',cost:''},expanded:{},ov:null,shown:null,lastUndo:null,dirty:false};
+try{var t0=localStorage.getItem('pawcard-tab');if(t0)ui.tab=t0}catch(e){}
+var M=function(){return S.meta.main||{}};
+var db=null,pending={},LSKEY='pawcard-local-v1';
+
+function applyLocal(col,id,data,del){
+  if(!S[col])S[col]={};
+  if(del)delete S[col][id];else S[col][id]=merge(S[col][id]?clone(S[col][id]):{},data);
+}
+function persistLocal(){try{localStorage.setItem(LSKEY,JSON.stringify(S))}catch(e){}}
+function enqueue(path,fn){
+  pending[path]=(pending[path]||Promise.resolve()).then(fn).catch(function(err){
+    if(err&&err.code==='invalid_argument'){ui.readOnly=true;paintStatus();toast('這個帳號目前只能查看,請讓對方分享「可編輯」權限')}
+    else toast('剛剛沒有存成功,請再試一次');
+  });
+}
+var store={
+  merge:function(path,data){
+    var p=path.split('/');applyLocal(p[0],p[1],data);
+    if(!db){persistLocal();onData();return}
+    onData();
+    enqueue(path,function(){var ref=db.doc(path);return ref.update(data).catch(function(e){if(e&&e.code==='invalid_argument')return ref.set(data);throw e})});
+  },
+  del:function(path){
+    var p=path.split('/');applyLocal(p[0],p[1],null,true);
+    if(!db){persistLocal();onData();return}
+    onData();
+    enqueue(path,function(){return db.doc(path).delete()});
+  }
+};
+
+/* ---------- 計算 ---------- */
+function isDone(t,day){var v=day&&day.done?day.done[t.id]:0;return t.target?(+v||0)>=t.target:!!v}
+function periodState(key){
+  var m=M(),s=m.periodStart,e=m.periodEnd;
+  var inPeriod=!!(s&&s<=key&&(!e||key<=e));
+  var iron=!!(s&&s<=key&&(!e||key<=addDays(e,7)));
+  return {active:!!(s&&s<=key&&!e),inPeriod:inPeriod,iron:iron,start:s,end:e};
+}
+function visibleTasks(key){
+  var p=periodState(key);
+  return TASKS.filter(function(t){return t.only==='iron'?p.iron:t.only==='cran'?!p.inPeriod:true});
+}
+function dayPoints(day){
+  if(!day)return 0;var n=0;
+  TASKS.forEach(function(t){if(isDone(t,day))n++});
+  AVOID.forEach(function(a){if(day.avoid&&day.avoid[a.id])n++});
+  return n+(day.bonus?BONUS:0);
+}
+function allDone(day,key){
+  return visibleTasks(key).every(function(t){return isDone(t,day)})&&AVOID.every(function(a){return day.avoid&&day.avoid[a.id]});
+}
+function totals(){
+  var dates=[];Object.keys(S.days).sort().forEach(function(k){var p=dayPoints(S.days[k]);for(var i=0;i<p;i++)dates.push(k)});
+  var spent=0;Object.keys(S.redemptions).forEach(function(k){spent+=+S.redemptions[k].cost||0});
+  return {E:dates.length,dates:dates,spent:spent,bal:dates.length-spent};
+}
+var started=function(){return Math.max(1,+M().cardsStarted||1)};
+function exceptionInfo(key){
+  var wd=parseKey(key).getDay();
+  if(wd===0||wd===6)return {weekend:true,can:true};
+  var ws=weekStart(key),used=0;
+  for(var i=0;i<5;i++){var k=addDays(ws,i);if(k!==key&&S.days[k]&&S.days[k].exception)used++}
+  return {weekend:false,can:used<EXC_PER_WEEK,left:EXC_PER_WEEK-used};
+}
+
+/* ---------- 今天的操作 ---------- */
+function patchDay(patch,opts){
+  opts=opts||{};
+  if(ui.readOnly){toast('這個帳號目前只能查看');return}
+  var key=todayKey(),cur=S.days[key]||{};
+  var before=dayPoints(cur);
+  var next=merge(clone(cur),clone(patch));
+  next.bonus=allDone(next,key);
+  patch=merge(clone(patch),{bonus:next.bonus});
+  var undo=invert(cur,patch);
+  var gained=dayPoints(next)-before;
+  var bonusOn=!cur.bonus&&next.bonus;
+  store.merge('days/'+key,patch);
+  if(opts.undo){toast('已復原');return}
+  if(gained>0){
+    ui.lastUndo=undo;
+    toast(bonusOn?'今天全部完成了!額外再加 '+BONUS+' 點':'+'+gained+' 點,爪印蓋好了',true);
+    if(opts.el)burst(opts.el,bonusOn?10:6);
+    if(bonusOn)confetti(18);
+  }else if(gained<0){ui.lastUndo=undo;toast('已取消,點數先收回來了',true)}
+}
+var A={};
+A.tab=function(id){ui.tab=id;try{localStorage.setItem('pawcard-tab',id)}catch(e){}render();window.scrollTo(0,0)};
+A.tap=function(id,el){
+  var t=TASKS.filter(function(x){return x.id===id})[0],day=S.days[todayKey()]||{};
+  var v=day.done?day.done[id]:0;
+  if(t.target){
+    if((+v||0)>=t.target){el.classList.remove('wiggle');void el.offsetWidth;el.classList.add('wiggle');return}
+    patchDay({done:(function(o){o[id]=(+v||0)+1;return o})({})},{el:el});
+  }else patchDay({done:(function(o){o[id]=!v;return o})({})},{el:el});
+};
+A.minus=function(id){
+  var day=S.days[todayKey()]||{},v=+(day.done&&day.done[id])||0;if(v<1)return;
+  patchDay({done:(function(o){o[id]=v-1;return o})({})});
+};
+A.avoid=function(id,el){
+  var day=S.days[todayKey()]||{},v=day.avoid&&day.avoid[id];
+  patchDay({avoid:(function(o){o[id]=!v;return o})({})},{el:el});
+};
+A.avoidAll=function(id,el){
+  var day=S.days[todayKey()]||{},all=AVOID.every(function(a){return day.avoid&&day.avoid[a.id]}),o={};
+  AVOID.forEach(function(a){o[a.id]=!all});
+  patchDay({avoid:o},{el:el});
+};
+A.exc=function(){var day=S.days[todayKey()]||{};patchDay({exception:!day.exception})};
+A.undo=function(){if(ui.lastUndo){var u=ui.lastUndo;ui.lastUndo=null;patchDay(u,{undo:true})}};
+A.pstart=function(){
+  var d=$('#pdate'),k=d&&d.value?d.value:todayKey();
+  store.merge('meta/main',{periodStart:k,periodEnd:null});toast('已記下經期開始,鐵劑會出現在今日任務');
+};
+A.pend=function(){
+  var d=$('#pdate'),k=d&&d.value?d.value:todayKey(),m=M();
+  if(m.periodStart&&k<m.periodStart){toast('結束日要在開始日之後喔');return}
+  store.merge('meta/main',{periodEnd:k});toast('辛苦了,鐵劑會再顯示 7 天');
+};
+A.newcard=function(){
+  var m=started();store.merge('meta/main',{cardsStarted:m+1});closeOv();ui.tab='card';render();toast('新的一張集點卡開始了');
+};
+A.card=function(id){ui.expanded[id]=!ui.expanded[id];render()};
+
+/* 兩段式確認 */
+function arm(key){
+  if(ui.armed&&ui.armed.key===key&&Date.now()-ui.armed.t<4000){ui.armed=null;return true}
+  ui.armed={key:key,t:Date.now()};render();
+  setTimeout(function(){if(ui.armed&&ui.armed.key===key&&Date.now()-ui.armed.t>=3900){ui.armed=null;render()}},4000);
+  return false;
+}
+var isArmed=function(key){return !!(ui.armed&&ui.armed.key===key&&Date.now()-ui.armed.t<4000)};
+
+/* 獎勵 */
+function readForm(pre){
+  var n=$('#'+pre+'-name'),c=$('#'+pre+'-cost');
+  var name=n?n.value.trim():'',cost=c?Math.floor(+c.value):0;
+  if(!name){toast('先幫獎勵取個名字吧');return null}
+  if(!(cost>=1&&cost<=9999)){toast('所需點數請填 1 到 9999');return null}
+  return {name:name.slice(0,40),cost:cost};
+}
+A.rwAdd=function(){
+  var f=readForm('nw');if(!f)return;
+  f.order=Date.now();store.merge('rewards/'+uid('r'),f);ui.draft={name:'',cost:''};toast('獎勵加好了');
+};
+A.ex=function(id){var e=EXAMPLES[+id];ui.draft={name:e.name,cost:String(e.cost)};render()};
+A.rwEdit=function(id){ui.editId=id;render()};
+A.rwCancel=function(){ui.editId=null;render()};
+A.rwSave=function(id){var f=readForm('ed');if(!f)return;store.merge('rewards/'+id,f);ui.editId=null;render();toast('已更新')};
+A.rwDel=function(id){if(arm('rw'+id)){store.del('rewards/'+id);toast('獎勵已刪除')}};
+A.redeem=function(id){
+  var r=S.rewards[id];if(!r)return;if(ui.readOnly){toast('這個帳號目前只能查看');return}
+  if(totals().bal<r.cost){toast('點數還差一點點,再累積一下就能換囉');return}
+  if(!arm('rd'+id))return;
+  store.merge('redemptions/'+uid('x'),{rewardId:id,name:r.name,cost:r.cost,at:new Date().toISOString(),day:todayKey()});
+  showOv({type:'redeem',name:r.name,cost:r.cost});confetti(22);
+};
+A.rdDel=function(id){if(arm('x'+id)){store.del('redemptions/'+id);toast('已撤銷兌換,點數還給你了')}};
+A.closeOv=function(){closeOv()};
+
+document.addEventListener('click',function(e){
+  var el=e.target.closest('[data-act]');if(!el||el.disabled)return;
+  var f=A[el.dataset.act];if(f)f(el.dataset.id,el,e);
+});
+document.addEventListener('keydown',function(e){
+  var t=e.target;
+  if((e.key==='Enter'||e.key===' ')&&t.matches&&t.matches('[role=button][data-act]')){e.preventDefault();t.click()}
+  if(e.key==='Enter'&&t.matches&&t.matches('input.name,input.cost')){var b=t.closest('.form').querySelector('.btn');if(b)b.click()}
+  if(e.key==='Escape'&&ui.ov)closeOv();
+});
+document.addEventListener('focusout',function(){if(ui.dirty)setTimeout(function(){var a=document.activeElement;if(!(a&&a.matches&&a.matches('input'))){ui.dirty=false;render()}},250)});
+
+/* ---------- 插畫與回饋 ---------- */
+function mascot(cls){
+  /* 依使用者提供的小狗線稿重繪成 SVG:只有線條,沒有填色 */
+  return '<svg class="mascot '+(cls||'')+'" viewBox="96 44 360 312" role="img" aria-label="小狗"><g fill="none" stroke="var(--sline)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">'+
+  '<path d="M236 92C262 60 330 40 385 78C400 88 410 100 416 106"/>'+
+  '<path d="M404 98C436 100 446 140 416 190"/>'+
+  '<path d="M233 110C205 128 188 165 200 192C210 212 238 210 250 192C256 183 258 176 256 170"/>'+
+  '<path d="M212 206C186 232 168 275 180 306C192 336 235 346 280 343"/>'+
+  '<path d="M276 288C278 318 290 340 312 338C326 336 332 322 330 244"/>'+
+  '<path d="M402 230C408 270 410 306 394 326C382 338 360 334 344 326"/>'+
+  '<path d="M148 302L172 300M137 320L165 320M104 340L180 331"/>'+
+  '<path d="M342 157C350 170 366 168 372 152C376 166 394 170 400 156"/></g>'+
+  '<g fill="var(--sline)"><circle cx="323" cy="132" r="5.500"/><circle cx="395" cy="122" r="5.500"/><path d="M361 129C366 124 379 124 383 129C381 138 375 142 372 142C369 142 363 138 361 129z"/></g></svg>';
+}
+function burst(el,n){
+  var r=el.getBoundingClientRect(),cx=r.right-34,cy=r.top+r.height/2;
+  var shapes=['i-heart','i-star','i-paw'],cols=['--stamp-b','--stamp-a','--stamp-c'];
+  for(var i=0;i<n;i++){
+    var d=document.createElement('div'),a=Math.random()*Math.PI*2,dist=34+Math.random()*40,s=shapes[i%3];
+    d.className='fx spark';d.style.left=cx+'px';d.style.top=cy+'px';
+    d.style.setProperty('--dx',Math.cos(a)*dist+'px');d.style.setProperty('--dy',Math.sin(a)*dist-20+'px');d.style.setProperty('--rot',(Math.random()*120-60)+'deg');
+    d.innerHTML='<svg viewBox="'+(s==='i-paw'?'0 0 40 40':'0 0 24 24')+'" style="fill:var(--'+cols[i%3].slice(2)+');stroke:none"><use href="#'+s+'"/></svg>';
+    document.body.appendChild(d);setTimeout(function(x){x.remove()},900,d);
+  }
+}
+function confetti(n){
+  var shapes=['i-heart','i-star','i-paw','i-fish'],cols=['--stamp-b','--stamp-a','--stamp-c'];
+  for(var i=0;i<n;i++){
+    var d=document.createElement('div'),s=shapes[i%4];
+    d.className='conf';d.style.left=Math.random()*96+'vw';
+    d.style.setProperty('--dx',(Math.random()*80-40)+'px');d.style.setProperty('--rot',(Math.random()*540-270)+'deg');
+    d.style.setProperty('--dur',(1.8+Math.random()*1.6)+'s');d.style.animationDelay=Math.random()*.6+'s';
+    d.innerHTML='<svg viewBox="'+(s==='i-paw'?'0 0 40 40':'0 0 24 24')+'" style="fill:var('+cols[i%3]+');stroke:none"><use href="#'+s+'"/></svg>';
+    document.body.appendChild(d);setTimeout(function(x){x.remove()},3800,d);
+  }
+}
+var toastTimer;
+function toast(msg,undo){
+  $('#toast-t').textContent=msg;$('#toast-b').hidden=!undo;
+  var t=$('#toast');t.classList.add('on');clearTimeout(toastTimer);toastTimer=setTimeout(function(){t.classList.remove('on')},undo?5500:3200);
+}
+function showOv(o){
+  ui.ov=o;var h;
+  if(o.type==='card'){
+    h='<div class="sheet sk" role="dialog" aria-modal="true" aria-label="集點卡集滿了">'+mascot()+'<h2>第 '+o.n+' 張集點卡集滿了!</h2><p>30 個爪印,每一格都是好好照顧自己的證明。</p><div class="btns"><button class="btn" data-act="newcard">開新卡</button><button class="btn ghost" data-act="closeOv">先看看這張</button></div></div>';
+    confetti(28);
+  }else h='<div class="sheet sk" role="dialog" aria-modal="true" aria-label="兌換成功">'+mascot()+'<h2>兌換成功:'+esc(o.name)+'</h2><p>用了 '+o.cost+' 點。好好享受,這是你應得的。</p><div class="btns"><button class="btn" data-act="closeOv">好!</button></div></div>';
+  var ov=$('#ov');ov.innerHTML=h;ov.hidden=false;
+}
+function closeOv(){ui.ov=null;var ov=$('#ov');ov.hidden=true;ov.innerHTML='';if(ui.tab==='card')render()}
+
+/* ---------- 畫面 ---------- */
+function chkSvg(){return '<svg class="chk" viewBox="0 0 32 32" aria-hidden="true"><path class="ring" d="M16 3.500c7 0 12.500 5.500 12.500 12.600S23 28.500 16 28.500 3.500 23 3.500 16 9 3.500 16 3.500z"/><path class="tick" d="M9.500 16.500l4.500 4.500 8.500-9.500"/></svg>'}
+function row(o){
+  return '<div class="row sk '+(o.done?'done':'')+'" role="button" tabindex="0" aria-pressed="'+!!o.done+'" data-act="'+o.act+'" data-id="'+o.id+'" style="--tint:var('+o.tint+');--solid:var('+o.solid+')">'+
+    '<span class="ico"><svg class="i-'+o.icon+'" viewBox="0 0 24 24"><use href="#i-'+o.icon+'"/></svg></span>'+
+    '<span class="txt"><b>'+esc(o.name)+'</b>'+(o.note?'<small>'+esc(o.note)+'</small>':'')+'</span>'+(o.extra||'')+chkSvg()+'</div>';
+}
+function taskRow(t,day){
+  var cat=CATS[t.cat],v=+(day.done&&day.done[t.id])||0,note=t.note,extra='';
+  if(t.id==='sleep')note=day.exception?'今天是例外日,24:00 前閉眼就好':'23:30 閉眼';
+  if(t.target){
+    extra='<span class="counter"><span class="n">'+Math.min(v,t.target)+' / '+t.target+' '+t.unit+'</span>'+(v>0?'<button class="minus" data-act="minus" data-id="'+t.id+'" aria-label="少記一'+t.unit+'">−</button>':'')+'</span>';
+  }
+  return row({act:'tap',id:t.id,name:t.name,note:note,icon:t.icon||cat.icon,tint:cat.c,solid:cat.s,done:isDone(t,day),extra:extra});
+}
+function greet(){var h=new Date().getHours();return h<5?'夜深了':h<11?'早安':h<14?'午安':h<18?'下午好':'晚安'}
+function msgFor(r){
+  return r===0?'新的一天,慢慢來就好。':r<.35?'已經開了好頭。':r<.7?'做得很棒,照這個步調就好。':r<1?'快要全部完成了,辛苦你了。':'今天全部完成!好好休息吧。';
+}
+function periodCard(key){
+  var p=periodState(key),status,btn;
+  if(p.active){status='經期第 '+(diffDays(key,p.start)+1)+' 天。今日任務已加入鐵劑,蔓越莓錠先休息。';btn='<button class="btn" data-act="pend">經期結束</button>'}
+  else if(p.iron&&p.end){status='經期已結束,鐵劑還會顯示 '+(diffDays(addDays(p.end,7),key)+1)+' 天。';btn='<button class="btn ghost" data-act="pstart">記錄新的經期開始</button>'}
+  else{status='目前不在經期,蔓越莓錠照常提醒。';btn='<button class="btn ghost" data-act="pstart">經期開始</button>'}
+  return '<section class="period sk"><h3>生理期模式</h3><p>'+status+'</p><div class="ctl"><input type="date" id="pdate" value="'+key+'" aria-label="日期">'+btn+'</div></section>';
+}
+function viewToday(){
+  var key=todayKey(),day=S.days[key]||{},vis=visibleTasks(key);
+  var total=vis.length+AVOID.length,done=vis.filter(function(t){return isDone(t,day)}).length+AVOID.filter(function(a){return day.avoid&&day.avoid[a.id]}).length;
+  var r=total?done/total:0,pts=dayPoints(day),d=parseKey(key);
+  var h='<section class="hero sk"><div class="hero-main">'+mascot(r===1?'hop':'')+'<div style="min-width:0"><p class="date">'+(d.getMonth()+1)+' 月 '+d.getDate()+' 日・週'+WD[d.getDay()]+'</p><h1>今天也愛你,昨天也愛你</h1><p class="msg">未來每一天,都會一直愛著你</p></div></div>'+
+    '<div class="prog"><div class="bar"><i style="width:'+Math.round(r*100)+'%"></i></div><span>'+done+' / '+total+'</span></div>'+
+    '<div class="chips"><span class="chip">今天已得 <b>'+pts+'</b> 點</span><span class="chip">最多 <b>'+(total+BONUS)+'</b> 點</span></div></section>';
+  h+=periodCard(key);
+  SLOTS.forEach(function(s){
+    var list=vis.filter(function(t){return t.slot===s.id});if(!list.length)return;
+    var c=list.filter(function(t){return isDone(t,day)}).length;
+    h+='<h2 class="slot"><svg viewBox="0 0 24 24"><use href="#i-'+s.icon+'"/></svg>'+s.name+' <small>'+s.hint+'</small><span class="cnt">'+c+' / '+list.length+'</span></h2>';
+    list.forEach(function(t){
+      h+=taskRow(t,day);
+      if(t.id==='sleep'){
+        var ex=exceptionInfo(key),can=ex.can||day.exception;
+        h+='<div class="exc"><button class="pill" data-act="exc" aria-pressed="'+!!day.exception+'"'+(can?'':' disabled')+'>例外日・延到 24:00</button><span>'+(ex.weekend?'週末不限次數':can?'平日這週還可以用 '+Math.max(ex.left,day.exception?1:0)+' 次':'這週的平日例外已經用過了')+'</span></div>';
+      }
+    });
+  });
+  var allA=AVOID.every(function(a){return day.avoid&&day.avoid[a.id]}),ac=AVOID.filter(function(a){return day.avoid&&day.avoid[a.id]}).length;
+  h+='<section class="review sk"><h2><svg viewBox="0 0 24 24"><use href="#i-moon"/></svg>睡前回顧</h2><p>回想一下今天,有做到的就勾起來。('+ac+' / '+AVOID.length+')</p>';
+  AVOID.forEach(function(a){var c=CATS[a.cat];h+=row({act:'avoid',id:a.id,name:a.name,note:a.note,icon:a.icon||c.icon,tint:c.c,solid:c.s,done:day.avoid&&day.avoid[a.id]})});
+  h+='<button class="btn ghost" data-act="avoidAll">'+(allA?'全部取消勾選':'五項都做到了,一次勾選')+'</button></section>';
+  h+='<div class="bonus sk '+(day.bonus?'got':'')+'"><svg viewBox="0 0 24 24"><use href="#i-pawo"/></svg><div><b>'+(day.bonus?'整天全部達成,額外 +'+BONUS+' 點':'整天全部達成,額外 +'+BONUS+' 點')+'</b><small>'+(day.bonus?'今天真的很棒。':'每一項都完成就會自動加上。')+'</small></div></div>';
+  return h;
+}
+
+function stampHTML(g,anim,order){
+  var h=hash(g),rot=(h%50)-25,dx=((h>>>3)%5)-2,dy=((h>>>6)%5)-2,op=(.8+((h>>>9)%20)/100).toFixed(2),f=1+(h%3);
+  return '<span class="stamp '+(anim?'press':'')+'" style="--rot:'+rot+'deg;--dx:'+dx+'px;--dy:'+dy+'px;--op:'+op+(anim?';--delay:'+(order*140)+'ms':'')+'"><svg viewBox="0 0 40 40" aria-hidden="true"><g filter="url(#ink'+f+')"><use href="#i-paw" width="40" height="40"/></g></svg></span>';
+}
+var RING='<svg class="ring" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4c11.500 0 20.500 8.800 20 20.200S35 44.500 23.800 44 4 35 4.300 23.800 12.500 4 24 4z"/></svg>';
+function cardHTML(idx,T,anim){
+  var start=idx*CARD,filled=Math.max(0,Math.min(CARD,T.E-start)),ink=['a','b','c'][idx%3];
+  var cells='',order=0;
+  for(var i=0;i<CARD;i++){
+    var g=start+i,inner='';
+    if(i<filled){
+      var an=anim&&g>=ui.shown;
+      inner=stampHTML(g,an,an?order++:0);
+    }
+    var mile=(i===CARD-1)?'<svg class="mile" viewBox="0 0 24 24"><use href="#i-gift"/></svg>':((i===9||i===19)?'<svg class="mile" viewBox="0 0 24 24"><use href="#i-pawo"/></svg>':'');
+    cells+='<div class="cell">'+RING+(i<filled?'':(mile||'<i>'+(i+1)+'</i>'))+inner+'</div>';
+  }
+  var first=T.dates[start],last=T.dates[start+CARD-1];
+  var foot=filled>=CARD?'<span>'+(first?mdLabel(first):'')+' 開始</span><span>'+(last?mdLabel(last):'')+' 集滿</span>':'<span>'+(first?mdLabel(first)+' 開始':'還沒有爪印')+'</span><span>再 '+(CARD-filled)+' 格就集滿</span>';
+  return '<section class="punch sk card-'+ink+'"><div class="punch-head"><h3>狗勾集點卡<small>No.'+(idx+1)+'</small></h3><span class="cn">'+filled+' / '+CARD+'</span></div><div class="grid">'+cells+'</div><div class="punch-foot">'+foot+'</div></section>';
+}
+function viewCard(){
+  var T=totals(),st=started(),cur=st-1,h='<h2 class="page">集點卡</h2><p class="sub">每得一點就蓋一個爪印。卡片是累積的記錄,兌換獎勵不會擦掉它。</p>';
+  h+=cardHTML(cur,T,true);
+  if(T.E>=st*CARD)h+='<div class="newcard sk"><p>這張卡集滿了!'+(T.E>st*CARD?'後面還有 '+(T.E-st*CARD)+' 點正在等著蓋章。':'')+'</p><button class="btn" data-act="newcard">開新卡</button></div>';
+  if(st>1){
+    h+='<h3 class="sec">以前的集點卡</h3><div class="hist">';
+    for(var i=st-2;i>=0;i--){
+      if(ui.expanded[i]){h+='<div class="expanded">'+cardHTML(i,T,false)+'<button class="btn ghost small" data-act="card" data-id="'+i+'" style="margin:-6px 0 10px">收起</button></div>';continue}
+      var f=Math.max(0,Math.min(CARD,T.E-i*CARD)),dots='';
+      for(var j=0;j<CARD;j++)dots+='<i class="'+(j<f?'':'off')+'"></i>';
+      var last=T.dates[i*CARD+CARD-1];
+      h+='<button class="mini sk card-'+['a','b','c'][i%3]+'" data-act="card" data-id="'+i+'"><div class="dots">'+dots+'</div><b>No.'+(i+1)+'</b><small>'+(last&&f>=CARD?mdLabel(last)+' 集滿':f+' / '+CARD)+'</small></button>';
+    }
+    h+='</div>';
+  }
+  ui.shown=Math.min(T.E,st*CARD);
+  return h;
+}
+function viewReward(){
+  var T=totals(),list=Object.keys(S.rewards).map(function(id){return Object.assign({id:id},S.rewards[id])}).sort(function(a,b){return (a.order||0)-(b.order||0)});
+  var tints=['--c-nav','--c-skin','--c-eyes','--c-sleep','--c-water'];
+  var h='<h2 class="page">獎勵兌換</h2><p class="sub">想要的小獎勵由你們自己決定。</p>';
+  h+='<div class="bal sk"><svg viewBox="0 0 40 40" aria-hidden="true"><use href="#i-paw"/></svg><div><small>目前可兌換</small><span class="big">'+T.bal+'</span> 點<small>累積 '+T.E+' 點・已兌換 '+T.spent+' 點</small></div></div>';
+  if(!list.length)h+='<div class="empty sk">'+mascot()+'<p>還沒有獎勵。在下面新增第一個吧,或點一個範例開始。</p></div>';
+  list.forEach(function(r,i){
+    if(ui.editId===r.id){
+      h+='<div class="form sk"><div class="f"><input class="name" id="ed-name" value="'+esc(r.name)+'" maxlength="40" aria-label="獎勵名稱"><input class="cost" id="ed-cost" type="number" min="1" max="9999" inputmode="numeric" value="'+r.cost+'" aria-label="所需點數"></div><div class="f" style="margin:0"><button class="btn small" data-act="rwSave" data-id="'+r.id+'">儲存</button><button class="btn ghost small" data-act="rwCancel">取消</button></div></div>';
+      return;
+    }
+    var can=T.bal>=r.cost,ar=isArmed('rd'+r.id),dar=isArmed('rw'+r.id);
+    h+='<div class="rw sk" style="--tint:var('+tints[i%tints.length]+')"><div class="nm"><b>'+esc(r.name)+'</b><small>'+r.cost+' 點'+(can?'':'・還差 '+(r.cost-T.bal)+' 點')+'</small></div><div class="acts">'+
+      '<button class="btn small '+(ar?'warn':'')+'" data-act="redeem" data-id="'+r.id+'"'+(can?'':' disabled')+'>'+(ar?'再點一次確認':'兌換')+'</button>'+
+      '<button class="iconbtn" data-act="rwEdit" data-id="'+r.id+'" aria-label="編輯"><svg viewBox="0 0 24 24"><use href="#i-pen"/></svg></button>'+
+      '<button class="iconbtn" data-act="rwDel" data-id="'+r.id+'" aria-label="刪除" '+(dar?'style="background:var(--warn)"':'')+'><svg viewBox="0 0 24 24" '+(dar?'style="stroke:var(--on-accent)"':'')+'><use href="#i-trash"/></svg></button></div></div>';
+    if(dar)h+='<p class="sub" style="margin:-4px 2px 10px">再點一次垃圾桶就會刪除「'+esc(r.name)+'」。</p>';
+  });
+  h+='<div class="form sk"><div class="f"><input class="name" id="nw-name" placeholder="新獎勵的名字" maxlength="40" value="'+esc(ui.draft.name)+'" aria-label="獎勵名稱"><input class="cost" id="nw-cost" type="number" min="1" max="9999" inputmode="numeric" placeholder="點數" value="'+esc(ui.draft.cost)+'" aria-label="所需點數"></div><button class="btn small" data-act="rwAdd">新增獎勵</button>'+
+    '<div class="ex"><span>範例:</span>'+EXAMPLES.map(function(e,i){return '<button class="pill" data-act="ex" data-id="'+i+'">'+esc(e.name)+' '+e.cost+'</button>'}).join('')+'</div></div>';
+  var logs=Object.keys(S.redemptions).map(function(id){return Object.assign({id:id},S.redemptions[id])}).sort(function(a,b){return a.at<b.at?1:-1});
+  h+='<h3 class="sec">兌換紀錄</h3>';
+  if(!logs.length)h+='<div class="empty sk" style="padding:12px">兌換過的獎勵會留在這裡。</div>';
+  else{
+    h+='<div class="rw sk" style="display:block;--tint:var(--paper)">';
+    logs.forEach(function(l){var ar=isArmed('x'+l.id);h+='<div class="log"><span class="d">'+mdLabel(l.day||l.at.slice(0,10))+'</span><span class="t">'+esc(l.name)+'</span><span class="p">−'+l.cost+'</span><button class="btn small '+(ar?'warn':'ghost')+'" data-act="rdDel" data-id="'+l.id+'">'+(ar?'確定撤銷':'撤銷')+'</button></div>'});
+    h+='</div>';
+  }
+  return h;
+}
+function viewNotes(){
+  function n(title,icon,tint,text,tags){return '<section class="note sk" style="--tint:var('+tint+')"><h3><svg class="i-'+icon+'" viewBox="0 0 24 24"><use href="#i-'+icon+'"/></svg>'+title+'</h3><p>'+text+'</p>'+(tags?'<div class="tags">'+tags+'</div>':'')+'</section>'}
+  var tg=function(a,p){return a.map(function(x){return '<span class="tag '+(p?'p':'')+'">'+x+'</span>'}).join('')};
+  var h='<h2 class="page">注意事項</h2><p class="sub">隨時翻出來看,不需要一次記住。</p><h3 class="sec" style="margin-top:6px">身體狀況</h3>';
+  h+=n('肩頸痠痛、胸椎凹陷','heart','--c-posture','長期可能影響心肝,平常多注意姿勢。');
+  h+=n('車禍後遺症','heart','--c-posture','腰不好,不要翹腳。');
+  h+=n('眼睛畏光、容易疲勞、小清光','eye','--c-eyes','偶爾會有模糊的情況。不要長時間戴隱眼、隨身帶墨鏡、不要用力揉眼睛。');
+  h+=n('異位性皮膚炎','tube','--c-skin','隨身攜帶藥膏與藥。');
+  h+='<h3 class="sec">保健品</h3>';
+  h+=n('靈芝','pill','--c-supp','空腹,起床後飲用。',tg(['早上','空腹']));
+  h+=n('B 群','pill','--c-supp','午餐後服用。',tg(['午餐後']));
+  h+=n('益生菌','pill','--c-supp','早上空腹,或飯前 30 分鐘,或隨餐。',tg(['早上空腹','飯前 30 分鐘','隨餐']));
+  h+=n('鐵劑','pill','--c-supp','經期中及經期後一週以上服用。隨餐或飯後,可搭配維他命 C。',tg(['經期中','經期後一週以上','隨餐 / 飯後','可搭配維他命 C'],true));
+  h+=n('蔓越莓錠','pill','--c-supp','任何時間皆可,但經期中不服用。',tg(['任何時間','經期中不吃'],true));
+  h+='<h3 class="sec">點數怎麼算</h3><section class="note sk" style="--tint:var(--paper)"><ul class="rules"><li>今日任務每完成一項 +1 點。喝水兩壺、人工淚液三次各算一項,做滿才加點。</li><li>睡前回顧五項,每項 +1 點。</li><li>當天全部達成,額外 +'+BONUS+' 點。</li><li>早睡是 23:30 閉眼。週末、聚會或開會可以標記例外日,延到 24:00,平日每週一次。</li><li>凌晨 '+ROLL_HOUR+' 點換日。點數與集點卡都會保留。</li><li>點錯了,再點一次就能取消,或按提示上的「復原」。</li></ul></section>';
+  return h;
+}
+
+/* ---------- 繪製 ---------- */
+function paintStatus(){
+  var s=$('#sync'),b=$('#banner');
+  if(ui.readOnly){s.textContent='唯讀';s.className='sync ro';b.innerHTML='<div class="banner sk">目前只能查看。請讓對方把這頁分享成「可編輯」,就能一起蓋章。</div>'}
+  else if(ui.mode==='local'){s.textContent='只存在這支手機';s.className='sync local';b.innerHTML='<div class="banner sk">目前沒有連上雲端,記錄只會存在這支手機。請確認已填入 Firebase 設定與家庭代碼,兩個人才會同步。</div>'}
+  else if(ui.mode==='connecting'){s.textContent='連線中';s.className='sync';b.innerHTML=''}
+  else{s.textContent='雲端同步中';s.className='sync';b.innerHTML=''}
+}
+function render(){
+  var v=$('#view'),a=document.activeElement;
+  if(a&&a.matches&&a.matches('input')&&v.contains(a)&&a.type!=='date'){ui.dirty=true;return}
+  var nw=$('#nw-name'),nc=$('#nw-cost');if(nw)ui.draft={name:nw.value,cost:nc?nc.value:''};
+  var pd=$('#pdate'),pv=pd?pd.value:null;
+  v.innerHTML=ui.tab==='today'?viewToday():ui.tab==='card'?viewCard():ui.tab==='reward'?viewReward():viewNotes();
+  if(pv&&$('#pdate'))$('#pdate').value=pv;
+  document.querySelectorAll('.nav button').forEach(function(b){if(b.dataset.id===ui.tab)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});
+  $('#bal').textContent=totals().bal;
+  paintStatus();
+}
+var prevFilled=null,lastKey=todayKey();
+function onData(){
+  var T=totals(),st=started(),filled=Math.max(0,Math.min(CARD,T.E-(st-1)*CARD));
+  if(ui.ready){
+    if(prevFilled!==null&&prevFilled<CARD&&filled===CARD&&!ui.ov)showOv({type:'card',n:st});
+    if(ui.shown===null||T.E<ui.shown)ui.shown=Math.min(T.E,st*CARD);
+  }
+  prevFilled=ui.ready?filled:null;
+  render();
+}
+function markReady(){
+  if(ui.ready)return;ui.ready=true;
+  var T=totals();ui.shown=Math.min(T.E,started()*CARD);prevFilled=null;onData();
+}
+
+/* ---------- GitHub 版雲端同步(Firebase Firestore) ----------
+   把 Firebase 專案設定貼進 FIREBASE_CONFIG。留空時改存在這支手機的瀏覽器(不同步)。 */
+var FIREBASE_CONFIG=null;
+/* 例:{apiKey:"...",authDomain:"...",projectId:"...",appId:"..."} */
+var FB_VER='10.12.2';
+function loadScript(src){return new Promise(function(ok,bad){var s=document.createElement('script');s.src=src;s.onload=ok;s.onerror=bad;document.head.appendChild(s)})}
+function familyCode(){
+  var c=null;
+  try{var q=new URLSearchParams(location.search).get('f');if(q){localStorage.setItem('pawcard-family',q);history.replaceState(null,'',location.pathname)}c=localStorage.getItem('pawcard-family')}catch(e){}
+  if(!c){c=(window.prompt('請輸入你們共用的「家庭代碼」(兩人輸入同一組,至少 8 個字,別人猜不到)')||'').trim();if(c.length>=8){try{localStorage.setItem('pawcard-family',c)}catch(e){}}else c=null}
+  return c;
+}
+async function tryFirestore(){
+  if(!FIREBASE_CONFIG)return null;
+  try{
+    var fam=familyCode();if(!fam)return null;
+    await loadScript('https://www.gstatic.com/firebasejs/'+FB_VER+'/firebase-app-compat.js');
+    await loadScript('https://www.gstatic.com/firebasejs/'+FB_VER+'/firebase-firestore-compat.js');
+    firebase.initializeApp(FIREBASE_CONFIG);
+    var base=firebase.firestore().collection('families').doc(fam);
+    return {
+      collection:function(c){return {onSnapshot:function(ok,bad){
+        return base.collection(c).onSnapshot(function(snap){
+          ok({docs:snap.docs.map(function(d){return {id:d.id,data:function(){return d.data()}}})});
+        },function(err){if(bad)bad({code:err.code==='permission-denied'?'revoked':err.code})});
+      }}},
+      doc:function(path){
+        var p=path.split('/'),ref=base.collection(p[0]).doc(p[1]);
+        return {update:function(d){return ref.set(d,{merge:true})},set:function(d){return ref.set(d)},delete:function(){return ref.delete()}};
+      }
+    };
+  }catch(e){return null}
+}
+/* ---------- 啟動 ---------- */
+async function boot(){
+  render();
+  try{db=window.claude&&window.claude.use?await window.claude.use('db'):null}catch(e){db=null}
+  if(!db&&!window.claude)db=await tryFirestore();
+  if(!db){
+    ui.mode='local';
+    try{var raw=JSON.parse(localStorage.getItem(LSKEY)||'null');if(raw)S=Object.assign(S,raw)}catch(e){}
+    markReady();return;
+  }
+  ui.mode='cloud';
+  var cols=['days','rewards','redemptions','meta'],got={};
+  cols.forEach(function(c){
+    db.collection(c).onSnapshot(function(snap){
+      var m={};snap.docs.forEach(function(d){m[d.id]=d.data()});
+      S[c]=m;got[c]=true;
+      if(cols.every(function(x){return got[x]}))markReady();else onData();
+    },function(err){if(err&&err.code==='revoked')ui.readOnly=true;paintStatus()});
+  });
+  setTimeout(markReady,6000);
+}
+setInterval(function(){var k=todayKey();if(k!==lastKey){lastKey=k;render();toast('新的一天開始了,今天也慢慢來')}},30000);
+boot();
+})();
+</script>
+
+</body>
+</html>
